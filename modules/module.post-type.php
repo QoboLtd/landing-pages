@@ -298,18 +298,7 @@ if (is_admin()) {
 			$datetime = the_modified_date('YmjH',null,null,false);
 			$permalink = $permalink = $permalink.'?dt='.$datetime;
 
-			if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) {
-
-				if (file_exists(LANDINGPAGES_UPLOADS_PATH . $template . '/thumbnail.png')) {
-					$thumbnail = LANDINGPAGES_UPLOADS_URLPATH . $template . '/thumbnail.png';
-				}
-				else {
-					$thumbnail = LANDINGPAGES_URLPATH . 'templates/' . $template . '/thumbnail.png';
-				}
-
-			} else {
-				$thumbnail = 'http://s.wordpress.com/mshots/v1/' . urlencode(esc_url($permalink)) . '?w=140';
-			}
+            $thumbnail = LANDINGPAGES_URLPATH . 'templates/' . $template . '/thumbnail.png';
 
 			echo "<a title='".__('Click to Preview this variation' , 'landing-pages') ."' class='thickbox' href='".$permalink."?lp-variation-id=0&iframe_window=on&post_id=".$post->ID."&TB_iframe=true&width=640&height=703' target='_blank'><img src='".$thumbnail."' style='width:150px;height:110px;' title='Click to Preview'></a>";
 
