@@ -27,8 +27,10 @@ function lp_fontend_enqueue_scripts($hook) {
 	/* Load Page Tracking */
 	$variation = lp_ab_testing_get_current_variation_id();
 
+
+    wp_enqueue_script( 'jquery-cookie' , LANDINGPAGES_URLPATH . 'js/jquery.cookie.js');
 	wp_enqueue_script( 'landing-page-view-track' , LANDINGPAGES_URLPATH . 'js/page_view_track.js', array( 'jquery','jquery-cookie'));
-	wp_localize_script( 'landing-page-view-track' , 'landing_path_info', array( 'post_id' => $post->ID , 'post_type' => $post->post_type , 'variation' => $variation, 'admin_url' => admin_url( 'admin-ajax.php' )));
+ 	wp_localize_script( 'landing-page-view-track' , 'landing_path_info', array( 'post_id' => $post->ID , 'post_type' => $post->post_type , 'variation' => $variation, 'admin_url' => admin_url( 'admin-ajax.php' )));
 
 
 	if (isset($post)&&$post->post_type=='landing-page') {
